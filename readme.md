@@ -130,7 +130,7 @@ app/
 
 - [x] Full Prometheus prometheus.yml config
 
-- [ ] Prom-client integration
+- [x] Prom-client integration
 
 - [ ] GUI tool for JanusGraph (WIP)
 
