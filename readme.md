@@ -15,6 +15,7 @@ Includes:
 - 🔁 Nodemon for dev reload
 - ✅ Jest for unit testing
 - 📘 OpenAPI documentation with Swagger UI
+- 📘 Documentation page on [Gitbook](https://graphrunner.gitbook.io/graphrunner)
 
 ---
 
