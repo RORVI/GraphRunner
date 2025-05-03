@@ -134,7 +134,7 @@ app/
 
 - [ ] GUI tool for JanusGraph (WIP)
 
-- [ ] Import [CESNET-TimeSeries24 dataset](https://zenodo.org/records/13382427) for more complex operations and meaningful data visualization
+- [ ] Import [CESNET-TimeSeries24 dataset](https://zenodo.org/records/13382427) for more complex operations and meaningful data visualization/'approximative' import via the datasources, with faker
 
 
 🧾 License
