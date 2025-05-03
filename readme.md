@@ -1,5 +1,9 @@
 # GraphRunner
 
+<p align="center">
+  <img src="graphrunner-logo.png" alt="GraphRunner Logo" width="300" />
+</p>
+
 A full-featured backend example project for building and querying a **graph database** powered by **JanusGraph**, **Cassandra**, and **Gremlin**, with a modern **TypeScript + Express** stack. This is meant to showcase an optimised version for fast, efficient data ingestion, processing and retrieval of pre-computated data from a graph database.
 
 Includes:
