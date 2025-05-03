@@ -6,10 +6,12 @@ import router from './routes/graphRoutes';
 import { logger } from './logger';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger';
+import { metricsRouter } from './monitoring/metrics';
 
 const app = express();
 
 app.use(express.json());
+app.use(metricsRouter);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(session({ secret: process.env.SESSION_SECRET || 'secret', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());

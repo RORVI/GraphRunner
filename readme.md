@@ -100,13 +100,21 @@ app/
 ├── tsconfig.json
 ```
 
-📊 Monitoring (Prometheus)
+# 📊 Monitoring (Prometheus)
 
-    Metrics endpoint: http://localhost:3000/metrics
+- Metrics endpoint: `http://localhost:3000/metrics`
+- Prometheus UI: `http://localhost:9090`
 
-    Prometheus: http://localhost:9090
+### 📦 What's Included
+- [`prom-client`](https://github.com/siimon/prom-client) integration for Node.js metrics
+- A dedicated `/metrics` endpoint exposed by the app
+- Dockerized Prometheus instance with a working `prometheus.yml`
 
-    Metrics wiring in progress (see TODO)
+### 🧠 What It Tracks
+- Event loop lag
+- Memory usage
+- HTTP request durations
+- Custom app metrics (extendable)
 
 📘 API Documentation (OpenAPI)
 - Swagger UI available at: [http://localhost:3000/docs](http://localhost:3000/docs)
@@ -120,7 +128,7 @@ app/
 
 - [ ] Integrate Vault for managing secrets instead of .env
 
-- [ ] Full Prometheus prometheus.yml config
+- [x] Full Prometheus prometheus.yml config
 
 - [ ] Prom-client integration
 
