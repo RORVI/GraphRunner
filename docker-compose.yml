@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  cassandra:
+    image: cassandra:4.1
+    container_name: cassandra
+    ports:
+      - "9042:9042"
+    environment:
+      - CASSANDRA_START_RPC=true
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+
+  janusgraph:
+    image: janusgraph/janusgraph:latest
+    container_name: janusgraph
+    ports:
+      - "8182:8182" # Gremlin Server
+    depends_on:
+      - cassandra
+    environment:
+      - JANUS_PROPS=/etc/opt/janusgraph/janusgraph-cql-es.properties
+    volumes:
+      - janusgraph_data:/var/lib/janusgraph
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  # app:
+  #   build: ./app
+  #   container_name: janus-app
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - janusgraph
+  #   environment:
+  #     - NODE_ENV=development
+  #   volumes:
+  #     - ./app:/usr/src/app
+
+volumes:
+  cassandra_data:
+  janusgraph_data:
