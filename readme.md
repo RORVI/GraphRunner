@@ -9,13 +9,13 @@ A full-featured backend example project for building and querying a **graph data
 Includes:
 - 📦 Docker-based setup (JanusGraph + Cassandra + Prometheus)
 - 🧠 Clean architecture (SOLID + use cases)
-- ✨ Google OAuth2 authentication (Passport.js)
+- ✨ Google OAuth2 authentication 
 - 📊 Prometheus-ready monitoring (Prom-client)
 - 🐛 Winston logging
 - 🔁 Nodemon for dev reload
 - ✅ Jest for unit testing
 - 📘 OpenAPI documentation with Swagger UI
-- 📘 Documentation page on [Gitbook](https://graphrunner.gitbook.io/graphrunner)
+- 📚 Documentation page on [Gitbook](https://graphrunner.gitbook.io/graphrunner)
 
 ---
 
@@ -50,7 +50,7 @@ This launches:
 
     Prometheus (port 9090)
 
-    The Node.js app runs locally on port 3000
+    The Node.js app runs locally on port 3030
 
 2. Start the app in dev mode
 ```bash
@@ -133,7 +133,7 @@ app/
 
 - [x] Prom-client integration
 
-- [ ] GUI tool for JanusGraph (WIP)
+- [x] GUI tool for JanusGraph (WIP)
 
 - [ ] Import [CESNET-TimeSeries24 dataset](https://zenodo.org/records/13382427) for more complex operations and meaningful data visualization/'approximative' import via the datasources, with faker
 

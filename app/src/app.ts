@@ -7,8 +7,11 @@ import { logger } from './logger';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger';
 import { metricsRouter } from './monitoring/metrics';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
+const port = process.env.APP_PORT || 3030;
 
 app.use(express.json());
 app.use(metricsRouter);
@@ -17,6 +20,6 @@ app.use(session({ secret: process.env.SESSION_SECRET || 'secret', resave: false,
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/api', router);
-app.listen(3000, () => logger.info('Server started on port 3000'));
+app.listen(port, () => logger.info(`Server started on port ${port}`));
 
 export default app;
