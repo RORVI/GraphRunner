@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug GraphRunner",
+            "program": "${workspaceFolder}/app/dist/app.js",
+            "preLaunchTask": "tsc: build",
+            "outFiles": [
+                "${workspaceFolder}/app/dist/**/*.js"
+            ],
+            "sourceMaps": true,
+            "smartStep": true,
+            "skipFiles": ["<node_internals>/**"],
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/**",
+                "!**/node_modules/**"
+            ]
+        }
+    ]
+}

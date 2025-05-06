@@ -18,8 +18,8 @@ services:
       - "8182:8182" # Gremlin Server
     depends_on:
       - cassandra
-    environment:
-      - JANUS_PROPS=/etc/opt/janusgraph/janusgraph-cql-es.properties
+    # environment:
+    #   - JANUS_PROPS=/etc/opt/janusgraph/janusgraph-cql-es.properties
     volumes:
       - janusgraph_data:/var/lib/janusgraph
 
