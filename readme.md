@@ -76,14 +76,14 @@ GREMLIN_MIMETYPE=application/vnd.gremlin-v3.0+json
 🧪 Sample API Usage
 Create a vertex:
 ```bash
-curl -X POST http://localhost:3000/api/vertex \
+curl -X POST http://localhost:3030/api/vertex \
   -H "Content-Type: application/json" \
   -d '{"name": "Alice", "label": "person"}'
 ```
 
 Get a vertex by ID:
 ```bash
-curl http://localhost:3000/api/vertex/{id}
+curl http://localhost:3030/api/vertex/{id}
 ```
 
 🧰 Folder Structure
@@ -110,7 +110,7 @@ app/
 
 # 📊 Monitoring (Prometheus)
 
-- Metrics endpoint: `http://localhost:3000/metrics`
+- Metrics endpoint: `http://localhost:3030/metrics`
 - Prometheus UI: `http://localhost:9090`
 
 ### 📦 What's Included
@@ -125,7 +125,7 @@ app/
 - Custom app metrics (extendable)
 
 📘 API Documentation (OpenAPI)
-- Swagger UI available at: [http://localhost:3000/docs](http://localhost:3000/docs)
+- Swagger UI available at: [http://localhost:3030/docs](http://localhost:3000/docs)
 - Describes all available endpoints (`POST`, `GET`, `PUT`, `DELETE`) for vertex operations
 - Documentation auto-generated from JSDoc annotations using `swagger-jsdoc`
 
@@ -140,7 +140,7 @@ app/
 
 - [x] Prom-client integration
 
-- [x] GUI tool for JanusGraph (WIP)
+- [x] [GUI tool for JanusGraph](https://github.com/RORVI/janusgraph-visualizer-for-graphrunner)
 
 - [x] Import [CESNET-TimeSeries24 dataset](https://zenodo.org/records/13382427) for more complex operations and meaningful data visualization/'approximative' import via the datasources, with faker
 
