@@ -98,7 +98,6 @@ app/
 │   ├── infrastructure/     # Data access
 │   ├── monitoring/         # Prometheus middleware
 │   ├── routes/             # Express route definitions
-│   ├── usecases/           # Business logic (CRUD ops)
 │   ├── utils/              # Helpers
 │   └── app.ts              # Express entry point
 ├── logger/                 # Winston logger
