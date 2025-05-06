@@ -1,8 +1,11 @@
 import { driver } from 'gremlin';
+import dotenv from 'dotenv';
 
-const gremlinEndpoint = 'ws://localhost:8182/gremlin';
-const traversalSource = 'g';
-const mimeType = 'application/vnd.gremlin-v3.0+json';
+dotenv.config();
+
+const gremlinEndpoint = `ws://${process.env.GREMLIN_HOST || 'localhost'}:${process.env.GREMLIN_PORT || 8182}/gremlin`;
+const traversalSource = process.env.GREMLIN_TRAVERSAL_SOURCE || 'g';
+const mimeType = process.env.GREMLIN_MIMETYPE || 'application/vnd.gremlin-v3.0+json';
 
 const client = new driver.Client(gremlinEndpoint, {
   traversalSource,
@@ -11,8 +14,12 @@ const client = new driver.Client(gremlinEndpoint, {
   pingEnabled: true,
 });
 
-client.open().catch((err) => {
-  console.error('Initial Gremlin client connection failed:', err);
-});
+client.open()
+  .then(() => {
+    console.log(`✅ Gremlin client connected to ${gremlinEndpoint}`);
+  })
+  .catch((err) => {
+    console.error('❌ Initial Gremlin client connection failed:', err.message);
+  });
 
 export default client;

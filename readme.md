@@ -61,9 +61,14 @@ npm run dev
 
 Create a .env file in app/:
 ```bash
-GOOGLE_CLIENT_ID=your-client-id
-GOOGLE_CLIENT_SECRET=your-secret
-SESSION_SECRET=some-session-secret
+APP_PORT=3030
+
+GOOGLE_CLIENT_ID=mock-client
+GOOGLE_CLIENT_SECRET=mock-secret
+SESSION_SECRET=keyboardcat
+
+GREMLIN_HOST=localhost
+GREMLIN_PORT=8182
 ```
 
 🧪 Sample API Usage

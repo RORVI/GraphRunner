@@ -26,10 +26,20 @@ app.use(passport.session());
 app.use('/api', router);
 app.listen(port, () => logger.info(`Server started on port ${port}`));
 
-process.on('SIGINT', async () => {
-    console.log('👋 Gracefully shutting down...');
-    await gremlinClient.close();
-    process.exit();
-  });
+async function shutdown() {
+    console.log('Gracefully shutting down...');
+    try {
+      await gremlinClient.close();
+      console.log('Gremlin client closed.');
+    } catch (err) {
+      console.error('Error during shutdown:', err);
+    } finally {
+      process.exit();
+    }
+  }
+  
+  process.on('SIGINT', shutdown);
+  process.on('SIGTERM', shutdown);
+  
 
 export default app;
