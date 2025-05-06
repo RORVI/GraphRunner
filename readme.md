@@ -69,6 +69,8 @@ SESSION_SECRET=keyboardcat
 
 GREMLIN_HOST=localhost
 GREMLIN_PORT=8182
+GREMLIN_TRAVERSAL_SOURCE='g'
+GREMLIN_MIMETYPE=application/vnd.gremlin-v3.0+json
 ```
 
 🧪 Sample API Usage
