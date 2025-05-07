@@ -4,7 +4,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Debug GraphRunner",
+            "name": "GraphRunner: Debug",
             "program": "${workspaceFolder}/app/dist/app.js",
             "preLaunchTask": "tsc: build",
             "outFiles": [
@@ -17,6 +17,18 @@
                 "${workspaceFolder}/**",
                 "!**/node_modules/**"
             ]
-        }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "GraphRunner: Debug with Nodemon",
+            "runtimeExecutable": "nodemon",
+            "program": "${workspaceFolder}/src/app.ts",
+            "restart": true,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "envFile": "${workspaceFolder}/.env"
+          }
     ]
 }
+  
