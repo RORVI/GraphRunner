@@ -17,18 +17,7 @@
                 "${workspaceFolder}/**",
                 "!**/node_modules/**"
             ]
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "GraphRunner: Debug with Nodemon",
-            "runtimeExecutable": "nodemon",
-            "program": "${workspaceFolder}/src/app.ts",
-            "restart": true,
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "envFile": "${workspaceFolder}/.env"
-          }
+        }
     ]
 }
   
