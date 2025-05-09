@@ -9,7 +9,7 @@ import * as getEdgeUseCase from '../services/getEdge';
 import * as updateEdgeUseCase from '../services/updateEdge';
 import * as deleteEdgeUseCase from '../services/deleteEdge';
 
-import { logger } from '../logger';
+import { logger } from '../logger/logs';
 
 //
 // ─── VERTEX CONTROLLERS ────────────────────────────────────────────────────────

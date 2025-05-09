@@ -3,13 +3,14 @@ import session from 'express-session';
 import passport from 'passport';
 import './auth/googleStrategy';
 import router from './routes/graphRoutes';
-import { logger } from './logger';
+import { logger } from './logger/logs';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger';
 import { metricsRouter } from './monitoring/metrics';
 import { ingestRoutes } from './routes/ingestRoutes';
 import dotenv from 'dotenv';
 import gremlinClient from './db/gremlinCLient';
+import { startKafkaConsumer, kafkaConsumer } from './kafka/kafkaConsumer';
 
 dotenv.config();
 
@@ -24,6 +25,9 @@ app.use(session({ secret: process.env.SESSION_SECRET || 'secret', resave: false,
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/api', router);
+startKafkaConsumer().catch(err => {
+  console.error('❌ Failed to start Kafka consumer:', err);
+});
 app.listen(port, () => logger.info(`Server started on port ${port}`));
 
 async function shutdown() {
@@ -31,6 +35,9 @@ async function shutdown() {
     try {
       await gremlinClient.close();
       console.log('Gremlin client closed.');
+
+      await kafkaConsumer.disconnect();
+      console.log('Kafka consumer disconnected.');
     } catch (err) {
       console.error('Error during shutdown:', err);
     } finally {

@@ -48,6 +48,8 @@ This launches:
 
     JanusGraph/Gremlin Server (port 8182)
 
+    Kafka Broker (port 9092) + Zookeeper (2181)
+
     Prometheus (port 9090)
 
     The Node.js app runs locally on port 3030
@@ -71,6 +73,11 @@ GREMLIN_HOST=localhost
 GREMLIN_PORT=8182
 GREMLIN_TRAVERSAL_SOURCE='g'
 GREMLIN_MIMETYPE=application/vnd.gremlin-v3.0+json
+
+# Kafka (used in dev and production modes)
+KAFKA_MODE=local
+KAFKA_BROKER_LOCALHOST=localhost:9092
+KAFKA_BROKER_DOCKER=kafka:9092
 ```
 
 🧪 Sample API Usage
@@ -90,21 +97,24 @@ curl http://localhost:3030/api/vertex/{id}
 
 ```bash
 app/
+├── logs/                   # Winston log files (error.log, combined.log)
 ├── src/
 │   ├── auth/               # OAuth strategies
-│   ├── config/             # Gremlin client, environment
+│   ├── config/             # Swagger, Prometheus, environment
 │   ├── controllers/        # Express route handlers
-│   ├── domain/             # Entity interfaces
-│   ├── infrastructure/     # Data access
-│   ├── monitoring/         # Prometheus middleware
+│   ├── db/                 # Gremlin client setup
+│   ├── kafka/              # Kafka consumer setup
+│   ├── logger/             # Winston logger (logger.ts)
+│   ├── monitoring/         # Prometheus metrics endpoint
 │   ├── routes/             # Express route definitions
-│   ├── utils/              # Helpers
+│   ├── services/           # Business logic (ingestionService, vertex/edge logic)
+│   ├── utils/              # Helpers (e.g., sanitize.ts)
 │   └── app.ts              # Express entry point
-├── logger/                 # Winston logger
-├── tests/                  # Jest unit tests
 ├── Dockerfile              # Container image
+├── docker-compose.yml      # Docker services including Kafka, Zookeeper
 ├── package.json
 ├── tsconfig.json
+├── .env
 ```
 
 # 📊 Monitoring (Prometheus)
@@ -129,7 +139,7 @@ app/
 - Documentation auto-generated from JSDoc annotations using `swagger-jsdoc`
 
 🛠 TODO List
-- [ ] Integrate Redis for caching or temporary data storage
+- [x] Kafka integration (GraphRunner is consumer; DS will be modular producer)
 
 - [ ] Add OAuth-based authentication & authorization (no external providers)
 

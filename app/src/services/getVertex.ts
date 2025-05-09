@@ -1,5 +1,5 @@
 import gremlinClient from '../db/gremlinCLient';
-import { logger } from '../logger';
+import { logger } from '../logger/logs';
 
 export const execute = async (id: string) => {
   try {
