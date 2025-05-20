@@ -13,7 +13,7 @@ Includes:
 - 📊 Prometheus-ready monitoring (Prom-client)
 - 🐛 Winston logging
 - 🔁 Nodemon for dev reload
-- ✅ Jest for unit testing
+- ✅ Jest for unit testing (full test coverage on service layer)
 - 📘 OpenAPI documentation with Swagger UI
 - 📚 Documentation page on [Gitbook](https://graphrunner.gitbook.io/graphrunner)
 
@@ -99,6 +99,8 @@ curl http://localhost:3030/api/vertex/{id}
 app/
 ├── logs/                   # Winston log files (error.log, combined.log)
 ├── src/
+│   ├── __mocks__/          # Mocks
+│   ├── __tests__/          # Unit tests
 │   ├── auth/               # OAuth strategies
 │   ├── config/             # Swagger, Prometheus, environment
 │   ├── controllers/        # Express route handlers
@@ -141,7 +143,9 @@ app/
 🛠 TODO List
 - [x] Kafka integration (GraphRunner is consumer; DS will be modular producer)
 
-- [ ] Add OAuth-based authentication & authorization (no external providers)
+- [ ] Add proper OAuth implementation
+
+- [ ] Add proper GitBook documentation
 
 - [ ] Integrate Vault for managing secrets instead of .env
 
@@ -153,7 +157,7 @@ app/
 
 - [x] Import [CESNET-TimeSeries24 dataset](https://zenodo.org/records/13382427) for more complex operations and meaningful data visualization/'approximative' import via the datasources, with faker
 
-- [ ] Add unit and integration tests with Jest. Keep the coverage at a minimum of 70%.
+- [x] Add unit tests for the service layer with Jest. Keep the coverage at a minimum of 70%.
 
 
 🧾 License
