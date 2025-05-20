@@ -1,0 +1,15 @@
+# Normalize all text files to use LF in the repo, convert to CRLF on checkout for Windows
+* text=auto
+
+# Explicitly declare UTF-8 encoding for code
+*.ts text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.env text eol=lf
+*.sh text eol=lf
+
+# Keep images and binary files untouched
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary

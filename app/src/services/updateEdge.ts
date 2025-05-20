@@ -1,4 +1,4 @@
-import gremlinClient from '../db/gremlinCLient';
+import {getGremlinClient} from '../db/gremlinClient';
 import { logger } from '../logger/logs';
 
 type EdgeUpdatePayload = {
@@ -18,7 +18,7 @@ export const execute = async (edgeId: string, updates: EdgeUpdatePayload) => {
     const query = `g.E('${edgeId}')${props}`;
     logger.info(`Updating edge ${edgeId} with query: ${query}`);
 
-    const result = await gremlinClient.submit(query);
+    const result = await getGremlinClient().submit(query);
     return result;
   } catch (error) {
     logger.error(`❌ Failed to update edge ${edgeId}`, error);

@@ -1,4 +1,4 @@
-import gremlinClient from '../db/gremlinCLient';
+import { getGremlinClient } from '../db/gremlinClient';
 import { logger } from '../logger/logs';
 
 type VertexInput = {
@@ -20,7 +20,7 @@ export const execute = async (data: VertexInput) => {
     const query = `g.addV('${label}')${props}`;
 
     logger.info(`Executing query: ${query}`);
-    const result = await gremlinClient.submit(query);
+    const result = await getGremlinClient().submit(query);
     return result;
   } catch (error) {
     logger.error('❌ Vertex creation failed', error);

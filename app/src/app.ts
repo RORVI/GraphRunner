@@ -9,7 +9,7 @@ import { swaggerSpec } from './config/swagger';
 import { metricsRouter } from './monitoring/metrics';
 import { ingestRoutes } from './routes/ingestRoutes';
 import dotenv from 'dotenv';
-import gremlinClient from './db/gremlinCLient';
+import {getGremlinClient} from './db/gremlinClient';
 import { startKafkaConsumer, kafkaConsumer } from './kafka/kafkaConsumer';
 
 dotenv.config();
@@ -33,7 +33,7 @@ app.listen(port, () => logger.info(`Server started on port ${port}`));
 async function shutdown() {
     console.log('Gracefully shutting down...');
     try {
-      await gremlinClient.close();
+      await getGremlinClient().close();
       console.log('Gremlin client closed.');
 
       await kafkaConsumer.disconnect();

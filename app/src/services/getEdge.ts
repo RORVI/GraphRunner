@@ -1,4 +1,4 @@
-import gremlinClient from '../db/gremlinCLient';
+import {getGremlinClient} from '../db/gremlinClient';
 import { logger } from '../logger/logs';
 
 export const execute = async (edgeId: string) => {
@@ -6,7 +6,7 @@ export const execute = async (edgeId: string) => {
     const query = `g.E('${edgeId}').elementMap()`;
     logger.info(`Retrieving edge ${edgeId} with query: ${query}`);
 
-    const result = await gremlinClient.submit(query);
+    const result = await getGremlinClient().submit(query);
     const value = result._items?.[0];
     return value || null;
   } catch (error) {

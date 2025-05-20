@@ -1,4 +1,4 @@
-import gremlinClient from '../db/gremlinCLient';
+import { getGremlinClient } from '../db/gremlinClient';
 import { logger } from '../logger/logs';
 
 type EdgeInput = {
@@ -26,7 +26,7 @@ export const execute = async (edge: EdgeInput) => {
     const query = `g.V().has('${fromKey}', '${edge.fromVal}').addE('${edge.label}').to(__.V().has('${toKey}', '${edge.toVal}'))${props}`;
     
     logger.info(`Creating edge with query: ${query}`);
-    const result = await gremlinClient.submit(query);
+    const result = await getGremlinClient().submit(query);
     return result;
   } catch (error) {
     logger.error('❌ Edge creation failed', error);

@@ -1,4 +1,4 @@
-import gremlinClient from '../db/gremlinCLient';
+import { getGremlinClient } from '../db/gremlinClient';
 import { logger } from '../logger/logs';
 
 type UpdatePayload = {
@@ -18,7 +18,7 @@ export const execute = async (id: string, updates: UpdatePayload) => {
     const query = `g.V('${id}')${props}`;
     logger.info(`Updating vertex ${id} with query: ${query}`);
 
-    const result = await gremlinClient.submit(query);
+    const result = await getGremlinClient().submit(query);
     return result;
   } catch (error) {
     logger.error('❌ Vertex update failed', error);

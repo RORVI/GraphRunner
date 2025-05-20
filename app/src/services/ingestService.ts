@@ -1,4 +1,4 @@
-import client from '../db/gremlinCLient';
+import { getGremlinClient } from '../db/gremlinClient';
 import { logger } from '../logger/logs';
 
 function sanitize(value: string): string {
@@ -17,7 +17,7 @@ export async function handleIngestion(vertices: any[], edges: any[]) {
 
     const query = `g.addV('${vertex.label}')${props}`;
     logger.info(`Sending Gremlin query: ${query}`);
-    await client.submit(query);
+    await getGremlinClient().submit(query);
   }
 
   for (const edge of edges) {
@@ -33,6 +33,6 @@ export async function handleIngestion(vertices: any[], edges: any[]) {
 
     const query = `g.V().has('${fromKey}', '${fromVal}').addE('${edge.label}').to(__.V().has('${toKey}', '${toVal}'))${props}`;
     logger.info(`Sending Gremlin edge query: ${query}`);
-    await client.submit(query);
+    await getGremlinClient().submit(query);
   }
 }
