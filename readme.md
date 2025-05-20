@@ -145,7 +145,7 @@ app/
 
 - [ ] Add proper OAuth implementation
 
-- [ ] Add proper GitBook documentation
+- [x] Add proper documentation [Notion website](https://wary-server-25b.notion.site/GraphRunner-5909ef9f1c784217a040a3992565f2a7)
 
 - [ ] Integrate Vault for managing secrets instead of .env
 
