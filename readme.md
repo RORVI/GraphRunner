@@ -15,7 +15,7 @@ Includes:
 - 🔁 Nodemon for dev reload
 - ✅ Jest for unit testing (full test coverage on service layer)
 - 📘 OpenAPI documentation with Swagger UI
-- 📚 Documentation page on [Gitbook](https://graphrunner.gitbook.io/graphrunner)
+- 📚 Documentation page on [Notion](https://wary-server-25b.notion.site/GraphRunner-5909ef9f1c784217a040a3992565f2a7)
 
 ---
 
